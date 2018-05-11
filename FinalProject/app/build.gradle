@@ -31,6 +31,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "price"
+
+    productFlavors{
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+            dimension "price"
+        }
+        paid {
+            applicationId "com.udacity.gradle.builditbigger.paid"
+            dimension "price"
+        }
+    }
 }
 
 dependencies {
@@ -47,6 +60,7 @@ dependencies {
     })
 
     testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
 
     implementation project(":jokedisplayer")
 }

@@ -1,7 +1,9 @@
 package com.matthewsyren.jokedisplayer;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class JokeDisplayerActivity
@@ -21,6 +23,25 @@ public class JokeDisplayerActivity
             String joke = bundle.getString(JOKE_BUNDLE_KEY);
             TextView tvJoke = findViewById(R.id.tv_joke);
             tvJoke.setText(joke);
+        }
+
+        //Displays back button in the ActionBar
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }
