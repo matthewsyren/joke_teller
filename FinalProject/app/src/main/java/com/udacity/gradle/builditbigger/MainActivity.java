@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
 import android.support.test.espresso.IdlingResource;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -88,7 +89,7 @@ public class MainActivity
         //Sets the IdlingResource's IdleState to true
         mIdlingResource.setIdleState(true);
 
-        if(joke != null && joke.length() > 0){
+        if(!TextUtils.isEmpty(joke)){
             //Sends the joke to the next Activity
             Intent intent = new Intent(MainActivity.this, JokeDisplayerActivity.class);
             intent.putExtra(JokeDisplayerActivity.JOKE_BUNDLE_KEY, joke);
