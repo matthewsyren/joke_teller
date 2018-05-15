@@ -7,4 +7,5 @@
 
     <!-- MainActivity -->
     <string name="error_no_jokes_retrieved">No jokes were retrieved, please try again</string>
+    <string name="error_no_internet_connection">There is no Internet connection, please connect and try again</string>
 </resources>

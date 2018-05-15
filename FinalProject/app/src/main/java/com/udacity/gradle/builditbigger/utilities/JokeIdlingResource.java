@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.utilities;
 
 import android.support.annotation.Nullable;
 import android.support.test.espresso.IdlingResource;

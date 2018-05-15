@@ -12,7 +12,7 @@ buildscript {
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.1"
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
@@ -21,7 +21,6 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -50,10 +49,14 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     endpointsServer project(path: ':backend', configuration: 'endpoints')
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.google.android.gms:play-services-ads:15.0.1'
     implementation 'com.google.api-client:google-api-client:1.23.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.1'
+
+    freeImplementation 'com.google.android.gms:play-services-ads:15.0.1'
+    freeImplementation 'com.android.support:customtabs:27.1.1'
+    freeImplementation 'com.android.support:support-media-compat:27.1.1'
+    freeImplementation 'com.android.support:support-v4:27.1.1'
 
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -63,4 +66,27 @@ dependencies {
     implementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
 
     implementation project(":jokedisplayer")
+}
+
+//Starts the GCE server
+task startEngine{
+    dependsOn ":backend:appengineStart"
+}
+
+//Starts all connected tests
+task startTesting{
+    dependsOn ":app:connectedAndroidTest"
+}
+
+//Stops the GCE server
+task stopEngine{
+    dependsOn ":backend:appengineStop"
+}
+
+//Launches the GCE server, runs all connected tests, and shuts down the GCE server
+task testTask{
+    dependsOn startEngine
+    dependsOn startTesting
+    startTesting.mustRunAfter(startEngine)
+    finalizedBy stopEngine
 }

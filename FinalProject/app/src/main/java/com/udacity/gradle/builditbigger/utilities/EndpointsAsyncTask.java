@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.utilities;
 
 import android.os.AsyncTask;
 
@@ -13,10 +13,10 @@ import java.io.IOException;
 public class EndpointsAsyncTask
         extends AsyncTask<Void, Void, String> {
     private static MyApi sMyApi = null;
-    private IEndpointsAsyncTaskCallback mCallback;
+    private final IEndpointsAsyncTaskCallback mCallback;
 
     //Constructor
-    EndpointsAsyncTask(IEndpointsAsyncTaskCallback callback){
+    public EndpointsAsyncTask(IEndpointsAsyncTaskCallback callback){
         mCallback = callback;
     }
 
@@ -54,6 +54,6 @@ public class EndpointsAsyncTask
         super.onPostExecute(joke);
 
         //Sends the joke back to the appropriate Activity
-        mCallback.getJoke(joke);
+        mCallback.sendJoke(joke);
     }
 }

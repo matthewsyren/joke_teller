@@ -15,7 +15,7 @@ public class JokeDisplayerActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joke_displayer);
 
-        //Fetches joke from the Bundle and displays it
+        //Fetches the joke from the Bundle and displays it
         Bundle bundle = getIntent().getExtras();
 
         if(bundle != null && bundle.containsKey(JOKE_BUNDLE_KEY)){
@@ -38,6 +38,7 @@ public class JokeDisplayerActivity
 
         switch (id){
             case android.R.id.home:
+                //Takes the user back to the previous screen
                 onBackPressed();
                 return true;
             default:

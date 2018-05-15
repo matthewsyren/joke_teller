@@ -1,6 +1,6 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.utilities;
 
 public interface IEndpointsAsyncTaskCallback {
     //Provides a callback for the EndpointsAsyncTask
-    void getJoke(String joke);
+    void sendJoke(String joke);
 }

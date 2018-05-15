@@ -1,7 +1,7 @@
 package com.matthewsyren.jokeprovider;
 
 public class JokeProvider {
-    private static String[] sJokes = {
+    private static final String[] sJokes = {
             "Why do Java developers wear glasses? \n\nBecause they can't C#",
             "What is a programmer's favourite place to hang out? \n\nThe Foo Bar",
             "Why did the programmer quit his job? \n\nBecause he didn't get arrays",
